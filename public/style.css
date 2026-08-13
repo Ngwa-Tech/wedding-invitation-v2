@@ -72,7 +72,7 @@ body {
 }
 
 .guest-name-wrap {
-  margin-top: 24px;
+  margin-top: 80px;
   width: 82%;
   max-width: 320px;
   text-align: center;
@@ -101,26 +101,6 @@ body {
 
 .envelope:active {
   transform: scale(0.98);
-}
-
-.guest-name-wrap {
-  position: absolute;
-  top: calc(min(58vw, 420px) + 130px);
-  left: 50%;
-  transform: translateX(-50%);
-  width: 82%;
-  max-width: 320px;
-  text-align: center;
-  z-index: 4;
-}
-.guest-name-wrap input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 40px;
-  border: 1px solid #E8C9A8;
-  font-family: 'Montserrat', sans-serif;
-  text-align: center;
-  background: #FFFFFF;
 }
 
 /* pass card */
@@ -189,7 +169,6 @@ body {
    /* change to your image path */
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* optional: parallax effect */
   background-repeat: no-repeat;
   padding-bottom: 3rem;
   animation: slideUpSlow 1.2s ease;
