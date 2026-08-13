@@ -1,0 +1,435 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #FBEAD9;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  color: #4A4A4A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app-container {
+  max-width: 520px;
+  width: 100%;
+  background: #FFFFFF;
+  min-height: 100vh;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.hidden-section {
+  display: none;
+}
+
+/* ENVELOPE ENTRY */
+.envelope-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #F2B88E;
+  background-image: url('images/emboss-texture.jpg');
+  background-size: 900px;
+  background-repeat: repeat;
+  background-blend-mode: multiply;
+  padding: 2rem;
+}
+
+.envelope-stage p {
+  color: #6B4226;
+  font-weight: 500;
+}
+
+.envelope {
+  position: relative;
+  width: 740px;
+  max-width: 85vw;
+  cursor: pointer;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.scroll-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 25px rgba(0,0,0,0.25));
+}
+
+.envelope.open {
+  transform: scale(1.15) translateY(-10px);
+  opacity: 0;
+}
+
+.guest-name-wrap {
+  margin-top: 24px;
+  width: 82%;
+  max-width: 320px;
+  text-align: center;
+}
+
+.guest-name-wrap input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 40px;
+  border: 1px solid #E8C9A8;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  background: #FFFFFF;
+}
+
+.envelope-stage > * {
+  position: relative;
+}
+
+.envelope-stage p {
+  color: #6B4226;
+  font-weight: 500;
+}
+
+
+
+.envelope:active {
+  transform: scale(0.98);
+}
+
+.guest-name-wrap {
+  position: absolute;
+  top: calc(min(58vw, 420px) + 130px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 82%;
+  max-width: 320px;
+  text-align: center;
+  z-index: 4;
+}
+.guest-name-wrap input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 40px;
+  border: 1px solid #E8C9A8;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  background: #FFFFFF;
+}
+
+/* pass card */
+/* Personalized pass card with background image */
+.pass-card {
+  background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 32px;
+  padding: 2rem 1.8rem;
+  text-align: center;
+  box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+  width: 85%;
+  margin: 0 auto;
+  border: 1px solid #F2D9C4;
+  animation: slideUpFade 2s ease forwards;
+}
+
+.pass-card.hide {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+@keyframes slideUpFade {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.pass-guest {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.8rem;
+  color: #6B4226;
+  margin-bottom: 0.5rem;
+}
+
+.reserved-text {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #5C3A21;
+}
+
+.btn-details {
+  background: #F2B88E;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 40px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: white;
+  margin-top: 1.8rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-details:hover {
+  background: #6B4226;
+}
+
+/* main invitation */
+/* main invitation with background image */
+.main-invitation {
+   /* change to your image path */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* optional: parallax effect */
+  background-repeat: no-repeat;
+  padding-bottom: 3rem;
+   animation: slideUpSlow 10s ease forwards;
+}
+
+@keyframes slideUpSlow {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-section {
+  text-align: center;
+  padding: 2rem 1.5rem 1rem;
+}
+
+.couple-photo {
+  width: 100%;
+  border-radius: 28px;
+  object-fit: cover;
+
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  background-image: url('images/Copie\ de\ Brown\ Floral\ Wedding\ Invitation\ Templates\ Design\ Tabloid.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+
+.names {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 2.2rem;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin: 0.5rem 0;
+}
+
+.romantic-quote {
+  font-style: italic;
+  font-size: 1rem;
+  color: #6FAFC4;
+  border-top: 1px solid #F2D9C4;
+  border-bottom: 1px solid #F2D9C4;
+  display: inline-block;
+  padding: 0.6rem 0;
+  margin-top: 0.5rem;
+}
+
+.module-card {
+  background: white;
+  margin: 1.5rem 1.2rem;
+  padding: 1.4rem 1.2rem;
+  border-radius: 32px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+  border: 1px solid #F2D9C4;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #6B4226;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.countdown-grid {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  gap: 12px;
+}
+
+.time-block {
+  background: #EAF6FA;
+  border-radius: 20px;
+  padding: 12px 0;
+  flex: 1;
+}
+
+.time-number {
+  font-size: 1.7rem;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  color: #6FAFC4;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: 12px;
+}
+
+.calendar-day {
+  padding: 6px 0;
+  border-radius: 30px;
+  font-weight: 400;
+}
+
+.wedding-day {
+  background: #F2B88E;
+  color: white;
+  position: relative;
+}
+
+.logistic-item {
+  margin-bottom: 1.2rem;
+  border-left: 2px solid #F2D9C4;
+  padding-left: 16px;
+}
+
+.map-link {
+  background: none;
+  border: 1px solid #F2B88E;
+  padding: 6px 14px;
+  border-radius: 40px;
+  font-size: 0.75rem;
+  color: #6FAFC4;
+  cursor: pointer;
+  margin-top: 8px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.timeline-icon {
+  width: 44px;
+  height: 44px;
+  background: #DCEEF5;
+  border-radius: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B4226;
+  font-size: 1.2rem;
+}
+
+.dress-palette {
+  display: flex;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.color-chip {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.formal-text {
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.rsvp-button {
+  background: #6B4226;
+  width: calc(100% - 2.4rem);
+  margin: 0 1.2rem 1rem;
+  border: none;
+  padding: 14px;
+  border-radius: 60px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.2s;
+}
+.modal.active {
+  visibility: visible;
+  opacity: 1;
+}
+.modal-content {
+  background: #FFFFFF;
+  width: 85%;
+  max-width: 400px;
+  border-radius: 48px;
+  padding: 2rem 1.5rem;
+  position: relative;
+}
+.modal-content input, .modal-content select, .modal-content textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid #E8C9A8;
+  border-radius: 28px;
+  font-family: 'Montserrat', sans-serif;
+  background: white;
+}
+.audio-control {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 99;
+  border: 1px solid #F2D9C4;
+}
