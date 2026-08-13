@@ -137,7 +137,7 @@ body {
   width: 85%;
   margin: 0 auto;
   border: 1px solid #F2D9C4;
-  animation: slideUpFade 2s ease forwards;
+  animation: slideUpFade 2s ease;
 }
 
 .pass-card.hide {
@@ -192,7 +192,7 @@ body {
   background-attachment: fixed; /* optional: parallax effect */
   background-repeat: no-repeat;
   padding-bottom: 3rem;
-   animation: slideUpSlow 10s ease forwards;
+  animation: slideUpSlow 1.2s ease;
 }
 
 @keyframes slideUpSlow {
@@ -215,9 +215,7 @@ body {
   width: 100%;
   border-radius: 28px;
   object-fit: cover;
-
   box-shadow: 0 12px 28px rgba(0,0,0,0.08);
-  background-image: url('images/Copie\ de\ Brown\ Floral\ Wedding\ Invitation\ Templates\ Design\ Tabloid.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

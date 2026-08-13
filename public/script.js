@@ -98,23 +98,8 @@
    const distance = finalTarget - startY;
     if (distance <= 0) return;
     
-   const duration = 14000; // 14 seconds total: fast first 6s, slower after
-    const fastPhaseDuration = 6000; // first 6 seconds
-    const fastPhaseCoverage = 0.6; // covers 60% of the distance by the 6s mark
+const duration = 40000; // 12 seconds, constant steady pace
     let startTime = null;
-    
-    function twoPhaseEase(elapsed) {
-      if (elapsed <= fastPhaseDuration) {
-        const p = elapsed / fastPhaseDuration;
-        const easedOut = 1 - Math.pow(1 - p, 3); // fast, snappy start
-        return easedOut * fastPhaseCoverage;
-      } else {
-        const slowPhaseDuration = duration - fastPhaseDuration;
-        const p = Math.min((elapsed - fastPhaseDuration) / slowPhaseDuration, 1);
-        const easedInOut = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
-        return fastPhaseCoverage + easedInOut * (1 - fastPhaseCoverage);
-      }
-    }
     
     function scrollStep(timestamp) {
       if (userInterrupted) {
@@ -124,8 +109,7 @@
       if (!startTime) startTime = timestamp;
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      const eased = twoPhaseEase(elapsed);
-      const scrollY = startY + (distance * eased);
+      const scrollY = startY + (distance * progress);
       window.scrollTo(0, scrollY);
       if (progress < 1 && !userInterrupted) {
         autoScrollAnimationId = requestAnimationFrame(scrollStep);
