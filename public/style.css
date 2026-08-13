@@ -137,8 +137,7 @@ body {
   width: 85%;
   margin: 0 auto;
   border: 1px solid #F2D9C4;
-  animation: slideUpFade 2s ease forwards;
-}
+  animation: slideUpFadeMain 0.6s ease forwards;
 
 .pass-card.hide {
   opacity: 0;
@@ -186,24 +185,18 @@ body {
 /* main invitation */
 /* main invitation with background image */
 .main-invitation {
-   /* change to your image path */
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* optional: parallax effect */
+  background-attachment: fixed;
   background-repeat: no-repeat;
   padding-bottom: 3rem;
-   animation: slideUpSlow 10s ease forwards;
+  opacity: 0;
+  animation: slideUpFadeMain 0.8s ease forwards;
 }
 
-@keyframes slideUpSlow {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes slideUpFadeMain {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .hero-section {

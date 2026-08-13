@@ -98,9 +98,9 @@
    const distance = finalTarget - startY;
     if (distance <= 0) return;
     
-    const duration = 8000; // 8 seconds total: fast first 5s, slower after
-    const fastPhaseDuration = 5000; // first 5 seconds
-    const fastPhaseCoverage = 0.75; // covers 75% of the distance by the 5s mark
+   const duration = 14000; // 14 seconds total: fast first 6s, slower after
+    const fastPhaseDuration = 6000; // first 6 seconds
+    const fastPhaseCoverage = 0.6; // covers 60% of the distance by the 6s mark
     let startTime = null;
     
     function twoPhaseEase(elapsed) {
