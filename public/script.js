@@ -95,14 +95,25 @@
     const maxScroll = document.body.scrollHeight - window.innerHeight;
     const finalTarget = Math.min(targetY, maxScroll);
     
-    const distance = finalTarget - startY;
+   const distance = finalTarget - startY;
     if (distance <= 0) return;
     
-    const duration = 100000; // 4 seconds
+    const duration = 8000; // 8 seconds total: fast first 5s, slower after
+    const fastPhaseDuration = 5000; // first 5 seconds
+    const fastPhaseCoverage = 0.75; // covers 75% of the distance by the 5s mark
     let startTime = null;
     
-    function easeInOutCubic(x) {
-      return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+    function twoPhaseEase(elapsed) {
+      if (elapsed <= fastPhaseDuration) {
+        const p = elapsed / fastPhaseDuration;
+        const easedOut = 1 - Math.pow(1 - p, 3); // fast, snappy start
+        return easedOut * fastPhaseCoverage;
+      } else {
+        const slowPhaseDuration = duration - fastPhaseDuration;
+        const p = Math.min((elapsed - fastPhaseDuration) / slowPhaseDuration, 1);
+        const easedInOut = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+        return fastPhaseCoverage + easedInOut * (1 - fastPhaseCoverage);
+      }
     }
     
     function scrollStep(timestamp) {
@@ -113,7 +124,7 @@
       if (!startTime) startTime = timestamp;
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      const eased = easeInOutCubic(progress);
+      const eased = twoPhaseEase(elapsed);
       const scrollY = startY + (distance * eased);
       window.scrollTo(0, scrollY);
       if (progress < 1 && !userInterrupted) {
@@ -236,7 +247,11 @@
   function openModal() { modal.classList.add('active'); }
   function closeModal() { modal.classList.remove('active'); rsvpFeedback.innerHTML = ''; maybeDateContainer.style.display = 'none'; maybeDateInput.value = ''; }
 
-  if (openRsvpBtn) openRsvpBtn.addEventListener('click', openModal);
+if (openRsvpBtn) openRsvpBtn.addEventListener('click', () => {
+    userInterrupted = true;
+    stopAutoScroll();
+    openModal();
+  });
   if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
   window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
