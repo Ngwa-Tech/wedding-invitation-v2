@@ -244,26 +244,8 @@
   const maybeDateContainer = document.getElementById('maybeDateContainer');
   const maybeDateInput = document.getElementById('maybeResponseDate');
 
-  let savedScrollY = 0;
-
-  function openModal() {
-    savedScrollY = window.scrollY;
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${savedScrollY}px`;
-    document.body.style.width = '100%';
-    modal.classList.add('active');
-  }
-
-  function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-    window.scrollTo(0, savedScrollY);
-    rsvpFeedback.innerHTML = '';
-    maybeDateContainer.style.display = 'none';
-    maybeDateInput.value = '';
-  }
+function openModal() { modal.classList.add('active'); }
+  function closeModal() { modal.classList.remove('active'); rsvpFeedback.innerHTML = ''; maybeDateContainer.style.display = 'none'; maybeDateInput.value = ''; }
 
 if (openRsvpBtn) openRsvpBtn.addEventListener('click', () => {
     userInterrupted = true;
