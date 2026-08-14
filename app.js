@@ -15,7 +15,10 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/weddin
 
 async function connectDB() {
   if (mongoose.connection.readyState === 1) return; // already connected
-  await mongoose.connect(MONGODB_URI);
+  await mongoose.connect(MONGODB_URI, {
+    serverSelectionTimeoutMS: 5000,
+    connectTimeoutMS: 5000
+  });
   console.log('✅ MongoDB connected to database:', mongoose.connection.name);
 }
 

@@ -72,7 +72,7 @@ body {
 }
 
 .guest-name-wrap {
-  margin-top: 80px;
+  margin-top: .00025px;
   width: 82%;
   max-width: 320px;
   text-align: center;
@@ -97,13 +97,10 @@ body {
   font-weight: 500;
 }
 
-
-
 .envelope:active {
   transform: scale(0.98);
 }
 
-/* pass card */
 /* Personalized pass card with background image */
 .pass-card {
   background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88));
@@ -163,7 +160,7 @@ body {
   background: #6B4226;
 }
 
-/* main invitation */
+
 /* main invitation with background image */
 .main-invitation {
    /* change to your image path */
