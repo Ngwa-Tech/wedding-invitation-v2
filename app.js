@@ -22,16 +22,6 @@ async function connectDB() {
   console.log('✅ MongoDB connected to database:', mongoose.connection.name);
 }
 
-app.use(async (req, res, next) => {
-  try {
-    await connectDB();
-    next();
-  } catch (err) {
-    console.error('❌ MongoDB connection error:', err);
-    res.status(500).json({ error: 'Database connection failed' });
-  }
-});
-
 // RSVP Schema
 const rsvpSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true },
@@ -70,10 +60,16 @@ app.get('/api/debug-env', (req, res) => {
   });
 });
 
+// Zero-dependency test route — no database involved at all
+app.get('/api/ping', (req, res) => {
+  res.json({ ok: true, time: new Date().toISOString() });
+});
+
 // POST /api/rsvp
 // POST /api/rsvp
 app.post('/api/rsvp', async (req, res) => {
   try {
+    await connectDB();
     console.log('📨 Received RSVP:', req.body);
     const { name, attending, message, maybeResponseDate } = req.body;
 
@@ -105,6 +101,7 @@ app.post('/api/rsvp', async (req, res) => {
 // GET /api/rsvp (protected)
 app.get('/api/rsvp', requireAdmin, async (req, res) => {
   try {
+    await connectDB();
     const rsvps = await RSVP.find().sort({ createdAt: -1 });
     res.json(rsvps);
   } catch (error) {
