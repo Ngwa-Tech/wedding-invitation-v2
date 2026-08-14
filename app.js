@@ -60,6 +60,17 @@ function requireAdmin(req, res, next) {
   return res.status(401).send('Invalid credentials.');
 }
 
+// TEMPORARY DIAGNOSTIC — remove after debugging
+app.get('/api/debug-env', (req, res) => {
+  res.json({
+    hasMongoUri: !!process.env.MONGODB_URI,
+    mongoUriLength: process.env.MONGODB_URI ? process.env.MONGODB_URI.length : 0,
+    hasAdminUser: !!process.env.ADMIN_USER,
+    hasAdminPass: !!process.env.ADMIN_PASS
+  });
+});
+
+// POST /api/rsvp
 // POST /api/rsvp
 app.post('/api/rsvp', async (req, res) => {
   try {
